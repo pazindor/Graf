@@ -9,9 +9,10 @@ void rysuj_graf(std::string graph) {
 	std::ofstream plik_wyjsciowy;
 	std::string nazwa_pliku;
 
-	plik_wyjsciowy.open(nazwa_pliku.c_str(), std::ios::out);
+	plik_wyjsciowy.open(nazwa_pliku.c_str(), std::ios::out);		//zapis  do pliku
 	plik_wyjsciowy << graph;
-	plik_wyjsciowy.close();
+	plik_wyjsciowy.close();							//zamykanie pliku
 
-	system(("C:\\graphviz-2.38\\release\\bin\\ "+ nazwa_pliku + "  -Tnpng -o graf.png").c_str());    //musisz sobie zamienic na swoja sciezke ;
+	system(("C:\\graphviz-2.38\\release\\bin\\ "+ nazwa_pliku + "  -Tnpng -o graf.png").c_str());    //musisz sobie zamienic na swoja sciezke 
+			//chyba musi byc na tej samej partycji co projekt
 }
