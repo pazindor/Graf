@@ -1,37 +1,55 @@
-#pragma once
-#include <cstdio>
-#include <cstdlib>
-#include <fstream>
-#include <string>
-#include "Naglowki.h"
+#include<SFML\Graphics.hpp>
+#include<SFML\Window.hpp>
+#include "graf.h"
 
-void rysuj_graf(std::string graph) {
-	//tlumaczenie 
+Graf::Graf(){
+	std::cin >> ilosc_wezlow;
+	//window = new sf::RenderWindow{sf::VideoMode{1366, 768}, "Graf" };
 	
+	Wezel* wezly = new Wezel[ilosc_wezlow]; // tworzy tablice wezlow na podstawie ilosci podanej
+	wezly[0].shape.setOrigin(683, 384); // tworzy wezel maina na srodku ekranu
+	wezly[0].shape.setRadius(radius / ilosc_wezlow * 2);
+	wezly[0].nazwa = "main.cpp";
+
+	for (int i = 1; i < ilosc_wezlow; i++) {
+		for (int j = i + 1; j < ilosc_wezlow; j++) {
+
+		}
+	}
+
+	while (true)
+	{
+		window.clear(sf::Color::Black);
+		//////////zeby okno dalo sie zamknac/////////
+		window.pollEvent(event);
+		if (event.type == sf::Event::Closed)
+		{
+			window.close();
+			break;
+		}
+		window.draw(wezly[0].shape);
+		window.display();
+	}
+	//////////////////////////////////////////////
 	
-	string dotPath = "C:\\Users\\Patryk\\Desktop\\Projekt_Graf\\graphviz-2.38\\release\\bin\\dot.exe ";	//sciezka do pliku
-	string tempFile = "temp.dot";		//tworzy tymczasowy plik o nazwie temp.dot
-	string outFile = "out.png";			//koncowy plik o rozszerzeniu png
-
-	ofstream out;
-	out.open(tempFile.c_str(), std::ios::out);	//zapis???
-	out << graph << std::endl;
-	out.close();
-
-	system((dotPath + " " + tempFile + " -Tpng -o " + outFile).c_str());		//komenda ktora normalnie sie wpisuje w cmd
-/*
-	std::ofstream plik_wyjsciowy;
-	std::string nazwa_pliku;
-
-	plik_wyjsciowy.open(nazwa_pliku.c_str(), std::ios::out);		//zapis  do pliku
-	plik_wyjsciowy << (graph);
-	plik_wyjsciowy.close();							//zamykanie pliku
-
-	system(("C:\\Users\\Patryk\\Desktop\\Projekt_Graf\\graphviz-2.38\\release\\bin\\dot.exe " + nazwa_pliku + "  -Tpng -o graf.png").c_str());    //musisz sobie zamienic na swoja sciezke 
-			//chyba musi byc na tej samej partycji co projekt */
+	//window.draw(wezly[0].shape);
+	//window.display();
 }
 
-void Poszukaj:: wyslij_stringa()
-{
-	rysuj_graf(tekst);
+Graf::~Graf() {
 }
+
+void Graf::inicjalizacja(){
+	//std::cin >> ilosc_wezlow;
+
+}
+
+
+
+
+
+
+
+
+
+
