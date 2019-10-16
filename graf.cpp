@@ -9,16 +9,16 @@ void rysuj_graf(std::string graph) {
 	//tlumaczenie 
 	
 	
-	string dotPath = "C:\\Users\\Patryk\\Desktop\\Projekt_Graf\\graphviz-2.38\\release\\bin\\dot.exe ";	//sciezka do pliku
-	string tempFile = "temp.dot";		//tworzy tymczasowy plik o nazwie temp.dot
-	string outFile = "out.png";			//koncowy plik o rozszerzeniu png
+	string sciezka= "C:\\Users\\Patryk\\Desktop\\Projekt_Graf\\graphviz-2.38\\release\\bin\\dot.exe ";	//sciezka do pliku
+	string tymczasowy = "temp.dot";		//tworzy tymczasowy plik o nazwie temp.dot
+	string wyjscie = "graf.png";			//koncowy plik o rozszerzeniu png
 
 	ofstream out;
-	out.open(tempFile.c_str(), std::ios::out);	//zapis???
+	out.open(tymczasowy.c_str(), std::ios::out);	//zapis???
 	out << graph << std::endl;
 	out.close();
 
-	system((dotPath + " " + tempFile + " -Tpng -o " + outFile).c_str());		//komenda ktora normalnie sie wpisuje w cmd
+	system((sciezka + " " + tymczasowy + " -Tpng -o " + wyjscie).c_str());		//komenda ktora normalnie sie wpisuje w cmd
 /*
 	std::ofstream plik_wyjsciowy;
 	std::string nazwa_pliku;
