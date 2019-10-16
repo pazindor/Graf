@@ -1,0 +1,17 @@
+#pragma once
+#include <cstdio>
+#include <cstdlib>
+#include <fstream>
+#include <string>
+
+void rysuj_graf(std::string graph) {
+	//tlumaczenie 
+	std::ofstream plik_wyjsciowy;
+	std::string nazwa_pliku;
+
+	plik_wyjsciowy.open(nazwa_pliku.c_str(), std::ios::out);
+	plik_wyjsciowy << graph;
+	plik_wyjsciowy.close();
+
+	system(("C:\\graphviz-2.38\\release\\bin\\ "+ nazwa_pliku + "  -Tnpng -o graf.png").c_str());    //musisz sobie zamienic na swoja sciezke ;
+}
